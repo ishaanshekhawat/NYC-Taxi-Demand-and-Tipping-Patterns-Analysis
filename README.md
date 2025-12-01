@@ -20,41 +20,41 @@ Clean & preprocess large Parquet files efficiently with PySpark.
 
 **Deliverables:** Notebooks, reproducible Docker setup, sample dashboards/visualizations (Plotly/Matplotlib/nbviews), and documentation.
 
-## 3. Scope (what’s included / excluded)
+## 3. Scope (what’s included/optional)
 
 **Included:**
 
-NYC Yellow taxi dataset ingestion.
+* NYC Yellow taxi dataset ingestion.
+* Local S3 (MinIO) for object storage.
+* PySpark ETL & analysis in Jupyter notebooks.
+* EDA visualizations, basic forecasting, and tip analysis.
 
-Local S3 (MinIO) for object storage.
+**Optional:**
 
-PySpark ETL & analysis in Jupyter notebooks.
-
-EDA visualizations, basic forecasting, and tip analysis.
-Excluded (unless you choose to add):
-
-Production deployment on cloud (S3, EMR).
-
-Real-time streaming ingestion (can be added later through Apache Kafka).
-
-Complex deep-learning models (out of scope unless requested).
+* Production deployment on cloud (S3, EMR).
+* Real-time streaming ingestion (can be added later through Apache Kafka).
+* Complex deep-learning models (out of scope unless requested).
 
 ## 4. High-level architecture
 
 **Docker Compose services:**
 
-Minio (S3-compatible object store)
-
-Jupyter (JupyterLab or Notebook with PySpark + required libs)
-
-(Optional) spark-master / spark-worker if using a standalone Spark cluster inside Docker
+* Minio (S3-compatible object store)
+* Jupyter (JupyterLab or Notebook with PySpark + required libs)
+* (Optional) spark-master / spark-worker if using a standalone Spark cluster inside Docker
 
 **Data flow:**
 
-Place Parquet files locally or upload to MinIO.
+* Place Parquet files locally or upload to MinIO.
+* PySpark in Jupyter reads CSVs from S3 endpoints (MinIO).
+* Write processed results back to S3 for persistence.
+* Visualizations are generated in notebooks or through Tableau.
 
-PySpark in Jupyter reads CSVs from S3 endpoints (MinIO).
+## 5. Deliverables
 
-Write processed results back to S3 for persistence.
-
-Visualizations are generated in notebooks or through Tableau.
+* Dockerized environment (docker-compose.yml, Dockerfile).
+* Jupyter notebooks for each process.
+* Processed parquet files in S3 layout.
+* README with setup instructions and how to run notebooks.
+* Short technical report (2–4 pages) summarizing findings, key charts, model performance.
+* Optional: small interactive dashboard (Streamlit) reading outputs from S3.
