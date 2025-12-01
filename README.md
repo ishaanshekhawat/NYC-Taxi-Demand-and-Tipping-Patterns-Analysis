@@ -1,112 +1,60 @@
-# NYC-Taxi-Demand-and-Tipping-Patterns-Analysis
+# NYC Taxi Demand & Tipping Patterns — Project Plan & Requirements
 
-**About the Data** - This dataset is published monthly by the NYC Taxi & Limousine Commission (TLC) and contains millions of taxi trips.
+## 1. Project overview
 
-**About the Schema**
+Analyze NYC Yellow Taxi trip records to understand spatial/temporal demand patterns and tipping behavior. Store raw and processed data in a local S3-compatible bucket (MinIO) inside Docker. Run notebooks and PySpark inside the same container stack to ingest, process, analyze, visualize, and model demand and tip prediction.
 
-**1. VendorID**
+## 2. Primary objectives
 
-ID of the company that provided the taxi.
-Common values:
-1 = Creative Mobile Technologies (CMT)
-2 = VeriFone (VTS)
+Ingest multi-month/year NYC taxi trip data into a local S3 (MinIO).
 
-**2. tpep_pickup_datetime**
+Clean & preprocess large Parquet files efficiently with PySpark.
 
-Timestamp (date + time) when the passenger got into the taxi.
+**Exploratory Data Analysis (EDA):** Daily/weekly/hourly demand, geographic hot-spots, trip distance/time distributions, and tip distributions.
 
-**3. tpep_dropoff_datetime**
+**Tipping patterns:** Correlate tip amount / tip percentage with fare, payment method, time-of-day, day-of-week, pickup/dropoff location, passenger count.
 
-Timestamp when the passenger got out of the taxi.
+**Demand forecasting:** Time-series forecast (per-zone or aggregated) to predict short-term demand.
 
-**4. passenger_count**
+**Tip prediction (optional ML):** Predict likelihood and amount/percentage of tipping for a trip.
 
-Number of passengers (as entered by the driver).
-Not always accurate (manual input).
+**Deliverables:** Notebooks, reproducible Docker setup, sample dashboards/visualizations (Plotly/Matplotlib/nbviews), and documentation.
 
-**5. trip_distance**
+## 3. Scope (what’s included / excluded)
 
-Distance of the trip in miles.
-Calculated by the taxi’s meter (GPS-based).
+**Included:**
 
-**6. RatecodeID**
+NYC Yellow taxi dataset ingestion.
 
-Type of rate used for the trip.
-Common values:
-1 = Standard rate
-2 = JFK
-3 = Newark
-4 = Nassau/Westchester
-5 = Negotiated fare
-6 = Group ride
+Local S3 (MinIO) for object storage.
 
-**7. store_and_fwd_flag**
+PySpark ETL & analysis in Jupyter notebooks.
 
-Whether the trip record was stored in the vehicle before being sent to the server.
-Values:
-Y = stored (no network during trip)
-N = sent in real-time
+EDA visualizations, basic forecasting, and tip analysis.
+Excluded (unless you choose to add):
 
-**8. PULocationID
-9. DOLocationID**
+Production deployment on cloud (S3, EMR).
 
-These are geographical zone IDs defined by TLC.
-Map to neighborhoods (e.g., Midtown, Queens, JFK Airport).
-Need to join them with a lookup file (taxi_zone_lookup.csv).
+Real-time streaming ingestion (can be added later through Apache Kafka).
 
-**10. payment_type**
+Complex deep-learning models (out of scope unless requested).
 
-How the rider paid:
-1	Credit card
-2	Cash
-3	No charge
-4	Dispute
-5	Unknown
-6	Voided trip
+## 4. High-level architecture
 
-**11. fare_amount**
+**Docker Compose services:**
 
-Base fare for the trip (distance × time).
+Minio (S3-compatible object store)
 
-**12. extra**
+Jupyter (JupyterLab or Notebook with PySpark + required libs)
 
-Extra charges:
-1 AM–6 AM night surcharge
-Peak hour weekday surcharge (4–8 PM)
+(Optional) spark-master / spark-worker if using a standalone Spark cluster inside Docker
 
-**13. mta_tax**
+**Data flow:**
 
-Flat $0.50 tax for all rides in NYC.
+Place Parquet files locally or upload to MinIO.
 
-**14. tip_amount**
+PySpark in Jupyter reads CSVs from S3 endpoints (MinIO).
 
-Tip paid by the passenger.
-Typically via credit card.
-Cash tips are not included.
+Write processed results back to S3 for persistence.
 
-**15. tolls_amount**
-
-Tolls paid (e.g., bridges, tunnels).
-
-**16. improvement_surcharge**
-
-Fixed $0.30 added to every trip.
-
-**17. total_amount**
-
-Final amount charged to the passenger (including fare + extras + tip + tolls).
-
-**18. congestion_surcharge**
-
-Congestion fees for rides entering certain zones:
-$2.50 Yellow Taxi
-$2.75 Green Taxi
-Applies in Manhattan south of 96th St.
-
-**19. Airport_fee**
-
-$1.25 fee when dropping or picking up at LaGuardia or JFK.
-
-**20. cbd_congestion_fee**
-
-Newer congestion charge (post-2023 rollout), similar to congestion_surcharge but more updated version based on zone/time.
+Visualizations are generated in notebooks or through Tableau.
