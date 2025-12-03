@@ -6,19 +6,19 @@ Analyze NYC Yellow Taxi trip records to understand spatial/temporal demand patte
 
 ## 2. Primary objectives
 
-Ingest multi-month/year NYC taxi trip data into a local S3 (MinIO).
+* Ingest multi-month/year NYC taxi trip data into a local S3 (MinIO).
 
-Clean & preprocess large Parquet files efficiently with PySpark.
+* Clean & preprocess large Parquet files efficiently with PySpark.
 
-**Exploratory Data Analysis (EDA):** Daily/weekly/hourly demand, geographic hot-spots, trip distance/time distributions, and tip distributions.
+* **Exploratory Data Analysis (EDA):** Daily/weekly/hourly demand, geographic hot-spots, trip distance/time distributions, and tip distributions.
 
-**Tipping patterns:** Correlate tip amount / tip percentage with fare, payment method, time-of-day, day-of-week, pickup/dropoff location, passenger count.
+* **Tipping patterns:** Correlate tip amount / tip percentage with fare, payment method, time-of-day, day-of-week, pickup/dropoff location, passenger count.
 
-**Demand forecasting:** Time-series forecast (per-zone or aggregated) to predict short-term demand.
+* **Demand forecasting:** Time-series forecast (per-zone or aggregated) to predict short-term demand.
 
-**Tip prediction (optional ML):** Predict likelihood and amount/percentage of tipping for a trip.
+* **Tip prediction (optional ML):** Predict likelihood and amount/percentage of tipping for a trip.
 
-**Deliverables:** Notebooks, reproducible Docker setup, sample dashboards/visualizations (Plotly/Matplotlib/nbviews), and documentation.
+* **Deliverables:** Notebooks, reproducible Docker setup, sample dashboards/visualizations (Plotly/Matplotlib/nbviews), and documentation.
 
 ## 3. Scope (what’s included/optional)
 
