@@ -1,0 +1,8 @@
+These are further areas that we can derive some insights from - 
+
+1. No. of Disputes and Voided Trip counts for trips that didn't provide real-time data (store_and_fwd_flag = Y). 
+- Does a lack of attention from cab drivers about the network show a correlation with disputes or voided trips?
+- Is it common not to send real-time data when the payment is not done?
+
+2. No. of Disputes and Voided Trip counts for certain areas (through PULocationID and DOLocationID columns).
+- Are there certain areas where we see more disputes than average?
