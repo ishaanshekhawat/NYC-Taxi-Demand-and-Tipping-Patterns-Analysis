@@ -37,6 +37,8 @@ services:
       MINIO_ENDPOINT: http://minio:9000
       AWS_ACCESS_KEY_ID: minioadmin
       AWS_SECRET_ACCESS_KEY: minioadmin123
+      PYSPARK_SUBMIT_ARGS: >
+        --packages org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.367 pyspark-shell
     command: start-notebook.sh --NotebookApp.token='mytoken' --NotebookApp.ip='0.0.0.0' --NotebookApp.allow_origin='*'
     networks:
       - appnet
