@@ -6,3 +6,5 @@ These are further areas that we can derive some insights from -
 
 2. No. of Disputes and Voided Trip counts for certain areas (through PULocationID and DOLocationID columns).
 - Are there certain areas where we see more disputes than average?
+
+3. Analyze Tipping Patterns changes over a decade (compare with 2015 data)
