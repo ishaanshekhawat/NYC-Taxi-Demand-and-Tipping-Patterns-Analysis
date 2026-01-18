@@ -2,6 +2,8 @@ Install mc client -
   (for Mac using brew) -  brew install minio/stable/mc
   (for Windows using choco) - choco install minio-client
 
+Note - Please make sure mc.exc file is present in 'C:\Windows\System32'
+
 
 Verify installation - 
 
