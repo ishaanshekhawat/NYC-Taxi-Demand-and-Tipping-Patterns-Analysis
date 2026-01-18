@@ -1,6 +1,7 @@
-Install mc client (for Mac using brew) - 
+Install mc client -
+  (for Mac using brew) -  brew install minio/stable/mc
+  (for Windows using choco) - choco install minio-client
 
-    brew install minio/stable/mc
 
 Verify installation - 
 
