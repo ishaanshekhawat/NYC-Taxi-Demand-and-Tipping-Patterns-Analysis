@@ -1,0 +1,23 @@
+How to use it
+
+Start the stack:
+          docker compose up -d
+
+MinIO:
+          Console UI: http://localhost:9001
+          S3 API: http://localhost:9000
+
+Default credentials in the compose: MINIO_ROOT_USER=minioadmin, MINIO_ROOT_PASSWORD=minioadmin123
+
+Jupyter Notebook:
+          URL: http://localhost:8888
+          Token: mytoken (change this or use an .env file / Docker secrets for production)
+Workspace on host: ./work (mounted into the container)
+
+Quick notes & suggestions
+
+Change the default credentials before using on any public/production machine. Prefer an .env file or Docker secrets for sensitive values.
+
+The YAML includes a healthcheck for MinIO and depends_on so Jupyter waits for MinIO container start (but it does not wait until MinIO is fully ready — the healthcheck helps).
+
+The Jupyter service injects MinIO credentials as environment variables so your notebooks can use boto3, s3fs, or Spark's s3a connector.

@@ -1,0 +1,26 @@
+Install mc client -
+  (for Mac using brew) -  brew install minio/stable/mc
+  (for Windows using choco) - choco install minio-client
+
+Note - Please make sure mc.exc file is present in 'C:\Windows\System32'
+
+
+Verify installation - 
+
+    mc --version
+
+Add local MinIO server as an alias - 
+
+    mc alias set local http://localhost:9000 minioadmin minioadmin123
+
+If it worked, verify it using this command and it will list all the buckets - 
+
+    mc ls local
+
+To delete a bucket - 
+
+    mc rb local/bucket_name
+
+If the bucket is not empty - 
+
+    mc rb --force local/bucket-name

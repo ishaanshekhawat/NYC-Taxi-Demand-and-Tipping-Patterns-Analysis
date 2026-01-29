@@ -1,0 +1,80 @@
+2026-01-29 17:41:05,446 - __main__ - INFO - No existing Spark session to stop
+2026-01-29 17:41:05,447 - __main__ - INFO - Creating Spark session: NYC Taxi EDA
+2026-01-29 17:41:08,806 - __main__ - INFO - Spark session created successfully (version 3.5.0)
+2026-01-29 17:41:08,808 - __main__ - INFO - Configuring Hadoop for MinIO
+2026-01-29 17:41:08,812 - __main__ - INFO - Spark configured for environment: development
+2026-01-29 17:41:08,812 - __main__ - INFO - Using MinIO endpoint: http://minio:9000
+2026-01-29 17:41:08,813 - __main__ - INFO - Reading from bucket: nyc-taxi
+2026-01-29 17:41:36,784 - __main__ - INFO - No existing Spark session to stop
+2026-01-29 17:41:36,785 - __main__ - INFO - Creating Spark session: NYC Taxi EDA
+2026-01-29 17:41:39,152 - __main__ - INFO - Spark session created successfully (version 3.5.0)
+2026-01-29 17:41:39,153 - __main__ - INFO - Configuring Hadoop for MinIO
+2026-01-29 17:41:39,156 - __main__ - INFO - Spark configured for environment: development
+2026-01-29 17:41:39,156 - __main__ - INFO - Using MinIO endpoint: http://minio:9000
+2026-01-29 17:41:39,156 - __main__ - INFO - Reading from bucket: nyc-taxi
+2026-01-29 17:41:41,583 - __main__ - INFO - ============================================================
+2026-01-29 17:41:41,584 - __main__ - INFO - CONNECTING TO MINIO
+2026-01-29 17:41:41,584 - __main__ - INFO - ============================================================
+2026-01-29 17:41:41,584 - __main__ - INFO - Initializing MinIO client
+2026-01-29 17:41:41,584 - __main__ - INFO - Endpoint: minio:9000
+2026-01-29 17:41:41,585 - __main__ - INFO - ✓ MinIO client connected successfully
+2026-01-29 17:41:41,585 - __main__ - INFO - Listing objects in bucket: nyc-taxi
+2026-01-29 17:41:41,604 - __main__ - INFO - ✓ Bucket listing complete
+2026-01-29 17:41:41,604 - __main__ - INFO -   - Total objects: 123
+2026-01-29 17:41:41,604 - __main__ - INFO -   - Total size: 8,101,472,431 bytes (7.55 GB)
+2026-01-29 17:41:53,289 - __main__ - INFO - ============================================================
+2026-01-29 17:41:53,290 - __main__ - INFO - READING 2023 DATA WITH SCHEMA ADJUSTMENTS
+2026-01-29 17:41:53,291 - __main__ - INFO - ============================================================
+2026-01-29 17:41:53,291 - __main__ - INFO - Reading January 2023 data (special schema)
+2026-01-29 17:41:55,854 - __main__ - INFO - ✓ January data loaded: 3,066,766 rows
+2026-01-29 17:41:55,858 - __main__ - INFO - Applying schema transformations to January data
+2026-01-29 17:41:55,972 - __main__ - INFO - ✓ Schema transformations applied
+2026-01-29 17:41:55,973 - __main__ - INFO - Reading February-December 2023 data
+2026-01-29 17:41:56,256 - __main__ - INFO - ✓ Feb-Dec data loaded: 35,243,460 rows
+2026-01-29 17:41:56,257 - __main__ - INFO - Merging January with Feb-Dec data
+2026-01-29 17:41:56,497 - __main__ - INFO - ✓ 2023 data merged: 38,310,226 rows
+2026-01-29 17:42:06,078 - __main__ - INFO - ============================================================
+2026-01-29 17:42:06,079 - __main__ - INFO - COMBINING DATA FROM ALL YEARS
+2026-01-29 17:42:06,080 - __main__ - INFO - ============================================================
+2026-01-29 17:42:06,081 - __main__ - INFO - Reading 2024 data
+2026-01-29 17:42:06,400 - __main__ - INFO - ✓ 2024 data loaded: 41,169,720 rows
+2026-01-29 17:42:06,400 - __main__ - INFO - Merging 2023 and 2024 data
+2026-01-29 17:42:06,667 - __main__ - INFO - ✓ 2023-2024 merged: 79,479,946 rows
+2026-01-29 17:42:06,668 - __main__ - INFO - Adding 'cbd_congestion_fee' column to 2023-2024 data
+2026-01-29 17:42:06,679 - __main__ - INFO - ✓ Column added
+2026-01-29 17:42:06,679 - __main__ - INFO - Reading 2025 data
+2026-01-29 17:42:06,854 - __main__ - INFO - ✓ 2025 data loaded: 31,556,438 rows
+2026-01-29 17:42:06,854 - __main__ - INFO - Merging all years (2023-2025)
+2026-01-29 17:42:07,126 - __main__ - INFO - ============================================================
+2026-01-29 17:42:07,127 - __main__ - INFO - ✓ ALL DATA COMBINED SUCCESSFULLY
+2026-01-29 17:42:07,127 - __main__ - INFO -   - 2023 rows: 38,310,226
+2026-01-29 17:42:07,127 - __main__ - INFO -   - 2024 rows: 41,169,720
+2026-01-29 17:42:07,127 - __main__ - INFO -   - 2025 rows: 31,556,438
+2026-01-29 17:42:07,127 - __main__ - INFO -   - TOTAL rows: 111,036,384
+2026-01-29 17:42:07,127 - __main__ - INFO - ============================================================
+2026-01-29 17:42:44,053 - __main__ - INFO - Optimizing DataFrame partitions (coalescing to 6 partitions)
+2026-01-29 17:42:44,099 - __main__ - INFO - ✓ DataFrame coalesced to 6 partitions
+2026-01-29 17:42:55,722 - __main__ - INFO - ============================================================
+2026-01-29 17:42:55,726 - __main__ - INFO - SAVING COMBINED DATASET TO S3
+2026-01-29 17:42:55,727 - __main__ - INFO - ============================================================
+2026-01-29 17:42:55,730 - __main__ - INFO - Writing to: s3a://nyc-taxi/Initial_DF
+2026-01-29 17:42:55,731 - __main__ - INFO - Total rows to write: 111,036,384
+2026-01-29 17:42:55,732 - __main__ - INFO - Mode: overwrite
+2026-01-29 17:42:55,732 - __main__ - INFO - Format: parquet
+2026-01-29 17:43:54,665 - __main__ - INFO - ============================================================
+2026-01-29 17:43:54,672 - __main__ - INFO - ✓ DATASET SAVED SUCCESSFULLY
+2026-01-29 17:43:54,672 - __main__ - INFO -   - Location: s3a://nyc-taxi/Initial_DF
+2026-01-29 17:43:54,672 - __main__ - INFO -   - Total rows: 111,036,384
+2026-01-29 17:43:54,672 - __main__ - INFO -   - Format: Parquet
+2026-01-29 17:43:54,672 - __main__ - INFO - ============================================================
+2026-01-29 17:44:52,640 - __main__ - INFO - No existing Spark session to stop
+2026-01-29 17:44:52,641 - __main__ - INFO - Creating Spark session: NYC Taxi EDA
+2026-01-29 17:44:56,396 - __main__ - INFO - Spark session created successfully (version 3.5.0)
+2026-01-29 17:44:56,398 - __main__ - INFO - Configuring Hadoop for MinIO
+2026-01-29 17:44:56,400 - __main__ - INFO - Spark configured for environment: development
+2026-01-29 17:44:56,400 - __main__ - INFO - Using MinIO endpoint: http://minio:9000
+2026-01-29 17:44:56,401 - __main__ - INFO - Reading from bucket: nyc-taxi
+2026-01-29 17:45:08,244 - __main__ - INFO - Starting data load from S3
+2026-01-29 17:45:10,811 - __main__ - INFO - Data loaded successfully. Total rows: 111036384
+2026-01-29 17:45:29,268 - __main__ - INFO - Saving cleaned dataset to S3
+2026-01-29 17:46:31,957 - __main__ - INFO - ✓ Cleaned dataset saved successfully to s3a://nyc-taxi/Clean_DF
