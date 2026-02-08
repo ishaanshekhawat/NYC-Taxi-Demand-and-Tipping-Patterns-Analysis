@@ -39,13 +39,7 @@ Use these links to view the interactive dashboards. They read processed outputs 
 * NYC Yellow taxi dataset ingestion.
 * Local S3 (MinIO) for object storage.
 * PySpark ETL & analysis in Jupyter notebooks.
-* EDA visualizations, basic forecasting, and tip analysis.
-
-**Optional:**
-
-* Production deployment on cloud (S3, EMR).
-* Real-time streaming ingestion (can be added later through Apache Kafka).
-* Complex deep-learning models (out of scope unless requested).
+* EDA visualizations, nearby hotspots recommendation, and tip analysis and prediction.
 
 ## 5. High-level architecture
 
@@ -53,21 +47,17 @@ Use these links to view the interactive dashboards. They read processed outputs 
 
 * Minio (S3-compatible object store)
 * Jupyter (JupyterLab or Notebook with PySpark + required libs)
-* (Optional) spark-master / spark-worker if using a standalone Spark cluster inside Docker
 
 **Data flow:**
 
 * Place Parquet files locally or upload to MinIO.
-* PySpark in Jupyter reads CSVs from S3 endpoints (MinIO).
+* PySpark in Jupyter reads parquet files from S3 endpoints (MinIO).
 * Write processed results back to S3 for persistence.
 * Visualizations are generated in notebooks or through Tableau.
 
 ## 6. Deliverables
 
-* Dockerized environment (docker-compose.yml, Dockerfile).
+* Dockerized environment (docker-compose.yaml).
 * Jupyter notebooks for each process.
 * Processed parquet files in S3 layout.
-* README with setup instructions and how to run notebooks.
-* Short technical report (2–4 pages) summarizing findings, key charts, model performance.
-* Optional: small interactive dashboard (Streamlit) reading outputs from S3.
-
+* Interactive dashboards (Streamlit) reading outputs from reduced datasets for faster processing.
